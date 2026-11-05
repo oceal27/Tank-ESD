@@ -46,3 +46,55 @@ input { padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-s
 .unit { background: #fff; border: 2px solid #cbd5e1; border-radius: 6px; padding: 12px; } .u-ESD { border-color: #dc2626; } .u-ALARM { border-color: #ca8a04; }
 .unit-head { display: flex; justify-content: space-between; margin-bottom: 8px; } .unit-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px dashed #e2e8f0; font-size: 13px; }
 @media (max-width: 860px) { .grid-main { grid-template-columns: 1fr; } .cards { grid-template-columns: repeat(2, 1fr); } header.top { flex-wrap: wrap; } }
+
+/* ===== HMI dashboard (gaya ISA-101: abu-abu netral, warna hanya untuk kondisi tidak normal) ===== */
+.hmi { --hm-bg: #d9dce1; --hm-panel: #eceef1; --hm-line: #9aa1ab; --hm-dark: #2d333b; font-variant-numeric: tabular-nums; }
+main:has(.hmi) { max-width: 1440px; }
+.hmi-status { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: #3a4049; color: #e5e7eb; padding: 8px 14px; border-radius: 4px 4px 0 0; font-size: 13px; }
+.hs-unit { font-weight: 800; letter-spacing: .6px; } .hs-item b { color: #fff; margin-left: 4px; } .hs-clock { margin-left: auto; font-weight: 700; font-size: 15px; color: #fff; }
+.hs-chip { padding: 3px 12px; border-radius: 3px; font-weight: 800; letter-spacing: .5px; background: #6b7280; color: #fff; }
+.st-NORMAL { background: #6b7280; } .st-WARMUP { background: #2f5d8a; } .st-ALARM { background: #e8c000; color: #1f2937; }
+.st-ESD { background: #d0021b; } .st-FAULT { background: #d0021b; } .st-OFFLINE { background: #111827; color: #9ca3af; border: 1px dashed #9ca3af; }
+.hmi-alarmbar { display: flex; gap: 16px; align-items: center; padding: 7px 14px; margin-bottom: 10px; font-size: 13px; text-decoration: none; border-radius: 0 0 4px 4px; color: #1f2937; background: #c8ccd2; }
+.hmi-alarmbar b { min-width: 74px; } .ab-count { margin-left: auto; font-weight: 700; }
+.ab-CRITICAL { background: #d0021b; color: #fff; } .ab-HIGH { background: #f07800; color: #fff; } .ab-MEDIUM { background: #e8c000; } .ab-none { color: #4b5563; }
+.hmi-grid { display: grid; grid-template-columns: 1fr 300px; gap: 10px; margin-bottom: 10px; align-items: start; }
+.hmi-panel { background: var(--hm-panel); border: 1px solid var(--hm-line); border-radius: 4px; padding: 10px 12px; margin-bottom: 10px; }
+.hmi-panel h3 { margin: 0 0 8px; font-size: 13px; letter-spacing: .4px; color: #374151; text-transform: uppercase; }
+.mimic-wrap { background: var(--hm-bg); padding: 4px; margin-bottom: 0; }
+.hmi-side .hmi-panel:last-child { margin-bottom: 0; }
+.mimic { width: 100%; height: auto; display: block; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+.mimic .pipe { fill: none; stroke: #6b7280; stroke-width: 5; }
+.mimic .pipe.flow { stroke: #4a7fb5; stroke-dasharray: 14 9; animation: hmiflow .9s linear infinite; }
+.mimic .pipe.flow.slow { animation-duration: 2.2s; }
+@keyframes hmiflow { to { stroke-dashoffset: -23; } }
+.mimic .vessel { fill: none; stroke: #374151; stroke-width: 2.5; } .mimic .vessel.thin { stroke-width: 2; }
+.mimic .vessel-fill { fill: #f3f4f6; }
+.mimic .water { fill: #7ea6d1; } .mimic .water-res { fill: #a9c3df; }
+.mimic .tick { stroke: #374151; stroke-width: 1.5; } .mimic .spm { fill: none; stroke: #b45309; stroke-width: 2; }
+.mimic .lbl { font-size: 12px; fill: #4b5563; } .mimic .tag { font-size: 13px; font-weight: 800; fill: #1f2937; }
+.mimic .tag.big { font-size: 18px; fill: #374151; } .mimic .bub { font-size: 11px; font-weight: 700; fill: #1f2937; }
+.mimic .pv-big { font-size: 30px; font-weight: 800; fill: #111827; } .mimic .unit { font-size: 15px; font-weight: 600; fill: #4b5563; }
+.mimic .pvbox { fill: #fff; stroke: #6b7280; stroke-width: 1.2; } .mimic .pvbox.bad { stroke: #d0021b; stroke-width: 2.4; }
+.mimic .pv { font-size: 15px; font-weight: 800; fill: #0b2a4a; } .mimic .pv.sm { font-size: 13px; }
+.mimic .box { fill: #e5e7eb; stroke: #4b5563; stroke-width: 1.4; } .mimic .box.trip { fill: #fde2e4; stroke: #d0021b; stroke-width: 2.4; }
+.mimic .box.stale { fill: url(#stale); }
+.mimic .stat { font-size: 12px; font-weight: 800; fill: #374151; } .mimic .stat.run { fill: #1f3b63; } .mimic .stat.bad { fill: #d0021b; }
+.mimic .sig { fill: none; stroke: #6b7280; stroke-width: 1.4; stroke-dasharray: 7 5; } .mimic .sig.trip { stroke: #d0021b; stroke-width: 2; }
+.mimic .pump { fill: #fff; stroke: #374151; stroke-width: 2.2; } .mimic .pump.run { fill: #374151; }
+.mimic .pump-tri { fill: #374151; } .mimic .pump-tri.run { fill: #fff; }
+.fp { display: flex; justify-content: space-around; gap: 8px; margin-bottom: 8px; }
+.fp-col { text-align: center; } .fp-bar { position: relative; width: 34px; height: 150px; background: #fff; border: 1px solid #6b7280; margin: 0 auto; }
+.fp-fill { position: absolute; left: 0; right: 0; bottom: 0; } .fp-fill.pv { background: #7ea6d1; } .fp-fill.sp { background: #e3c48f; } .fp-fill.out { background: #9ca3af; }
+.fp-mark { position: absolute; left: -5px; right: -5px; height: 0; border-top: 1px solid #374151; }
+.fp-val { font-weight: 800; font-size: 15px; margin-top: 4px; } .fp-lbl { font-size: 11px; color: #4b5563; font-weight: 700; }
+.fp-tbl { width: 100%; font-size: 12.5px; border-collapse: collapse; margin-bottom: 8px; }
+.fp-tbl td { padding: 3px 2px; border-bottom: 1px solid #d1d5db; } .fp-tbl td:last-child { text-align: right; font-weight: 700; }
+.hmi-btn { display: block; text-align: center; padding: 6px; background: #4b5563; color: #fff; border-radius: 3px; text-decoration: none; font-size: 12.5px; font-weight: 700; }
+.hmi-btn:hover { background: #374151; }
+.al-list { list-style: none; margin: 0 0 8px; padding: 0; font-size: 12px; }
+.al-list li { display: grid; grid-template-columns: 14px 1fr auto; gap: 2px 8px; padding: 5px 0; border-bottom: 1px solid #d1d5db; align-items: center; }
+.al-list li.acked { opacity: .65; } .al-tag { font-weight: 800; } .al-msg { grid-column: 2 / 4; color: #4b5563; } .al-t { color: #6b7280; }
+.pm { width: 12px; height: 12px; display: inline-block; grid-row: span 2; }
+.pm-CRITICAL { background: #d0021b; } .pm-HIGH { background: #f07800; } .pm-MEDIUM { background: #e8c000; } .pm-LOW { background: #7aa6d6; }
+@media (max-width: 1100px) { .hmi-grid { grid-template-columns: 1fr; } .mimic-wrap { overflow-x: auto; } .mimic { min-width: 900px; } }
