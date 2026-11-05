@@ -98,3 +98,44 @@ main:has(.hmi) { max-width: 1440px; }
 .pm { width: 12px; height: 12px; display: inline-block; grid-row: span 2; }
 .pm-CRITICAL { background: #d0021b; } .pm-HIGH { background: #f07800; } .pm-MEDIUM { background: #e8c000; } .pm-LOW { background: #7aa6d6; }
 @media (max-width: 1100px) { .hmi-grid { grid-template-columns: 1fr; } .mimic-wrap { overflow-x: auto; } .mimic { min-width: 900px; } }
+
+/* ===== Halaman login ===== */
+.lg-wrap { position: relative; min-height: 100vh; display: grid; place-items: center; overflow: hidden; background: #f4f6f9; padding: 24px; }
+.lg-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lg-bg .lg-eq { fill: none; stroke: #b8c2cf; stroke-width: 4; }
+.lg-bg .lg-eq.thin { stroke-width: 3; }
+.lg-bg .lg-pipe { fill: none; stroke: #c9d2dd; stroke-width: 8; }
+.lg-bg .lg-pipe.thin { stroke-width: 5; }
+.lg-bg .lg-flow { fill: none; stroke: #8fb3d6; stroke-width: 4; stroke-dasharray: 14 16; animation: lgflow 1.6s linear infinite; }
+.lg-bg .lg-flow.slow { animation-duration: 3.2s; }
+.lg-bg .lg-flow.data { stroke: #5eb3a6; stroke-width: 3; stroke-dasharray: 6 10; animation-duration: 1s; }
+@keyframes lgflow { to { stroke-dashoffset: -30; } }
+.lg-bg .lg-sig { fill: none; stroke: #7fbfb4; stroke-width: 2.5; stroke-dasharray: 10 8; }
+.lg-bg .lg-bub { fill: #f6f8fa; stroke: #5eb3a6; stroke-width: 3; }
+.lg-bg .lg-bubline { stroke: #5eb3a6; stroke-width: 2; }
+.lg-bg .lg-bubt { font: 700 17px system-ui, sans-serif; fill: #3f8f84; } .lg-bg .lg-bubt.sm { font-size: 13px; }
+.lg-bg .lg-tag { font: 800 20px system-ui, sans-serif; fill: #9aa6b4; letter-spacing: 1px; } .lg-bg .lg-tag.big { font-size: 30px; fill: #a8b3c0; }
+.lg-bg .lg-big { font: 800 34px system-ui, sans-serif; fill: #a8b3c0; letter-spacing: 3px; }
+.lg-bg .lg-lbl { font: 600 15px system-ui, sans-serif; fill: #a3adb9; } .lg-bg .lg-lbl.teal { fill: #74b3a9; }
+.lg-bg .lg-tick { stroke: #b8c2cf; stroke-width: 2; }
+.lg-bg .lg-water { animation: lglevel 9s ease-in-out infinite; }
+@keyframes lglevel { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-70px); } }
+.lg-bg .lg-led { animation: lgblink 2s steps(2) infinite; } @keyframes lgblink { 50% { opacity: .25; } }
+.lg-card { position: relative; z-index: 1; width: 100%; max-width: 420px; background: rgba(255,255,255,.96); border: 1px solid #e2e8f0; border-radius: 16px; padding: 30px 34px 24px; display: grid; gap: 12px; box-shadow: 0 18px 50px rgba(15,23,42,.12); backdrop-filter: blur(4px); }
+.lg-lock { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 2px; background: #e6f2f0; color: #1f6f66; }
+.lg-org { text-align: center; font-size: 12px; font-weight: 800; letter-spacing: 1.4px; color: #64748b; }
+.lg-card h1 { margin: 0; text-align: center; font-size: 22px; color: #0f172a; }
+.lg-sub { margin: -4px 0 6px; text-align: center; color: #64748b; font-size: 14px; }
+.lg-field { display: grid; gap: 6px; font-size: 13.5px; font-weight: 600; color: #334155; }
+.lg-field input { width: 100%; padding: 11px 13px; border: 1px solid #cbd5e1; border-radius: 9px; font-size: 15px; background: #fff; }
+.lg-field input:focus { outline: none; border-color: #2f7f74; box-shadow: 0 0 0 3px rgba(47,127,116,.15); }
+.lg-pass { position: relative; display: block; } .lg-pass input { padding-right: 80px; }
+.lg-eye { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); border: 0; background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 700; padding: 6px 9px; border-radius: 6px; cursor: pointer; }
+.lg-err { background: #fde2e4; color: #b91c1c; font-size: 13px; padding: 8px 10px; border-radius: 8px; }
+.lg-btn { margin-top: 4px; padding: 12px; border: 0; border-radius: 9px; background: #1f6f66; color: #fff; font-size: 15.5px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 16px rgba(31,111,102,.25); }
+.lg-btn:hover { background: #185b54; } .lg-btn:disabled { opacity: .7; cursor: wait; }
+.lg-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 4px; }
+.lg-chips span { font-size: 11px; font-weight: 700; color: #3f6f69; background: #eef6f4; border: 1px solid #d3e7e3; padding: 3px 8px; border-radius: 999px; }
+.lg-note { margin: 0; text-align: center; font-size: 12px; color: #94a3b8; }
+.lg-foot { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 12px; color: #94a3b8; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .lg-bg * { animation: none !important; } }
